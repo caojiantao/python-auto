@@ -3,6 +3,9 @@ import pyautogui
 import pydirectinput
 import config
 
+# 按键速度
+pydirectinput.PAUSE=0.01
+
 class Event:
   def __init__(self, type, content):
     self.type = type
