@@ -1,1 +1,2 @@
-loopDelay = 0.5
+startDelay = 1
+maxLoopTimes = 100

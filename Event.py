@@ -1,16 +1,17 @@
 # PyAutoGUI使用的是模拟按键码，而对于这些游戏或软件来说需要直接从设备中获取数据，而不是模拟的
 import pyautogui
 import pydirectinput
+import time
 import config
 
 # 按键速度
-pydirectinput.PAUSE=0.01
+pydirectinput.PAUSE=0.05
 
 class Event:
   def __init__(self, type, content):
     self.type = type
     self.content = content
-
+ 
   def isImg(self):
     suffixs = ['jpg', 'jpeg', 'png']
     for suf in suffixs:
@@ -39,5 +40,7 @@ class Event:
       pydirectinput.click(self.content)
     elif self.type == '输入':
       pydirectinput.typewrite(self.content)
-    elif self.type == '循环延迟':
-      config.loopDelay = float(self.content)
+    elif self.type == '延迟执行':
+      time.sleep(float(self.content))
+    elif self.type == '循环次数':
+      config.maxLoopTimes = int(self.content)
